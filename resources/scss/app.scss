@@ -1,1 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
+
+#button {
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+}
+
+#password-card {
+    &:hover {
+        background-color: lightgrey;
+    }
+}
+
+
+
+

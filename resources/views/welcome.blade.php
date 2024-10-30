@@ -1,5 +1,5 @@
 @extends('layouts.app')
 @section('content')
 
-    <h1>Welcome to iSafe</h1>
+    <h1>Welcome to iLock</h1>
 @endsection

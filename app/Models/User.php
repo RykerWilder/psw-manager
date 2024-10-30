@@ -12,8 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function passwords() {
-        return $this->hasMany(Password::class);
+    public function userPasswords() {
+        return $this->hasMany(UserPassword::class);          
     }
 
     /**

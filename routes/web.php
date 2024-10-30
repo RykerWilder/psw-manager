@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FavouriteController;
 use App\Http\Controllers\Admin\UserPasswordController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,12 +22,13 @@ Route::get('/', function () {
 });
 
 
-Route::middleware('auth')
+Route::middleware('auth', 'verified')
     ->prefix('admin') // Prefisso nell'url delle rotte di questo gruppo
     ->name('admin.') // inizio di ogni nome delle rotte del gruppo
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/password', UserPasswordController::class);
+        Route::resource('/passwords', UserPasswordController::class);
+        Route::resource('/favourites', FavouriteController::class);
     });
 
 require __DIR__ . '/auth.php';

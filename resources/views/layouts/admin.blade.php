@@ -18,18 +18,16 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
 
 <body>
     <div id="app">
-
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow" style="height: 80px;">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">iSafe</a>
+                    <a class="navbar-brand" href="#">iLock</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -44,8 +42,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -62,24 +59,30 @@
             </nav>
         </header>
 
-        <div class="container-fluid vh-100">
+        <div class="container-fluid" style="height: calc(100vh - 80px)">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link text-white fs-5{{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                        <ul class="nav nav-underline d-flex flex-column justify-content-evenly">
+                            <li class="nav-item" id="navbar">
+                                <a class="nav-link text-white fs-5 {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
-                                    <i class="fa-sharp fa-solid fa-house fs-4"></i> HomePage
+                                    <i class="fa-sharp fa-solid fa-house fs-4 me-1"></i> HomePage
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white fs-5"
-                                    href="{{ route('admin.passwords.index') }}">
-                                    <i class="fa-sharp fa-solid fa-house fs-4"></i> Password
+                            <li class="nav-item text-light" id="navbar">
+                                <a class="nav-link text-white fs-5 {{ Route::currentRouteName() == 'admin.passwords.index' ? 'active' : '' }}" href="{{ route('admin.passwords.index') }}">
+                                    <i class="fa-solid fa-box-archive fs-4 me-2"></i> Passwords
+                                </a>
+                            </li>
+                            <li class="nav-item" id="navbar">
+                                <a class="nav-link text-white fs-5 {{ Route::currentRouteName() == 'admin.passwords.create' ? 'active' : '' }}" href="{{ route('admin.passwords.create') }}">
+                                    <i class="fa-solid fa-square-plus fs-4 me-2"></i> New Password
+                                </a>
+                            </li>
+                            <li class="nav-item" id="navbar">
+                                <a class="nav-link text-white fs-5 {{ Route::currentRouteName() == 'admin.favourites.index' ? 'active' : '' }}" href="{{ route('admin.favourites.index') }}">
+                                    <i class="fa-solid fa-star fs-4 me-1"></i> Favourites
                                 </a>
                             </li>
                         </ul>
