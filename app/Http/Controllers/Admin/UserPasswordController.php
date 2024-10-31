@@ -52,9 +52,10 @@ class UserPasswordController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserPassword $userPassword)
+    public function show($id)
     {
-        return view('admin.passwords.show', compact('userPassword'));
+        $password = UserPassword::findOrFail($id);
+        return view('admin.passwords.show', compact('password'));
     }
 
     /**

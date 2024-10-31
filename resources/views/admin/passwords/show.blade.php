@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <h1>{{ $userPassword->name }}</h1>
+            <div class="col">    
+                <h1>{{ $password->name }}</h1>
+            </div>
         </div>
     </div>
 @endsection
-
-

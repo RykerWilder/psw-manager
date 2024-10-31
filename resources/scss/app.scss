@@ -1,5 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 
+#search-bar {
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
 #button {
     &:hover {
         background-color: black;

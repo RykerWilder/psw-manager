@@ -46,6 +46,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 mt-4">
+
+                {{-- WELCOME CARD --}}
                 <div class="border border-dark rounded p-3">
                     <div class="border-bottom border-dark">
                         <h3>{{ __('iLock') }}</h3>
@@ -62,6 +64,7 @@
                     </div>
                 </div>
 
+                {{-- PASSWORD GENERATOR --}}
                 <div>
                     <h5 class="mb-3 mt-5 text-center">Here you can generate your safety password.</h5>
                     <div class="gap-2 border border-dark p-3 rounded">

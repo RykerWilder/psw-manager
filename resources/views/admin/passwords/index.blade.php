@@ -1,17 +1,44 @@
 @extends('layouts.admin')
 
 @section('content')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBar = document.getElementById('search-bar');
+            const passwordCards = document.querySelectorAll('#password-card');
+
+            // Aggiungi un event listener per rilevare i cambiamenti nella barra di ricerca
+            searchBar.addEventListener('keyup', function() {
+
+                const searchTerm = searchBar.value.toLowerCase();
+
+                // Loop attraverso gli elementi della lista e nascondi quelli che non corrispondono
+                passwordCards.forEach(card => {
+                    const passwordName = card.querySelector('h5').textContent.toLowerCase();
+
+                    // Mostra o nasconde l'elemento basato sulla corrispondenza con il termine di ricerca
+                    if (passwordName.includes(searchTerm)) {
+                        card.classList.remove('d-none');
+                    } else {
+                        card.classList.add('d-none');
+                    }
+                });
+            });
+        });
+    </script>
+
     <div class="container">
         <div class="row">
             <div class="col d-flex flex-column gap-3 p-3">
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid d-flex justify-content-center">
-                        <form class="d-flex gap-2" role="search">
-                            <input class="form-control" type="search" placeholder="Search password" aria-label="Search">
-                            <button id="button" class="btn fs-5 border border-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </form>
-                    </div>
-                </nav>
+
+                {{-- SEARCHBAR --}}
+                <div class="container-fluid d-flex justify-content-center mt-3 mb-3">
+                    <nav class="border border-dark rounded p-3 bg-black d-flex justify-content-between" style="width: 50%;">
+                        <input id="search-bar" type="search" placeholder="Search password" aria-label="Search" class="border border-0 bg-black text-light w-100">
+                        <span><i class="fa-solid fa-magnifying-glass text-light fs-5"></i></span>
+                    </nav>
+                </div>
+
+                {{-- PASSWORDS LIST --}}
                 @foreach ($passwords as $passwordInfo)
                     @if ($passwordInfo->user_id === Auth::id())
                         <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $passwordInfo->id]) }}"
@@ -21,7 +48,8 @@
                                 <span><i
                                         class="fa-{{ $passwordInfo->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
                             </div>
-                            <div style="background-color: {{ $passwordInfo->color }}; height: 20px; aspect-ratio: 1;" class="rounded-circle p-2">
+                            <div style="background-color: {{ $passwordInfo->color }}; height: 20px; aspect-ratio: 1;"
+                                class="rounded-circle p-2">
                             </div>
                         </a>
                     @endif
