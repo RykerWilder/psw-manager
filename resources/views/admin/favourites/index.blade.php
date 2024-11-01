@@ -30,12 +30,14 @@
             <div class="col d-flex flex-column gap-3 p-3">
 
                 {{-- SEARCHBAR --}}
-                <div class="container-fluid text-center mt-3 mb-3">
-                    <nav class="border border-dark rounded p-3 d-inline bg-black">
-                        <input id="search-bar" type="search" placeholder="Search password" aria-label="Search" class="border border-0 bg-black text-light">
+                <div class="container-fluid d-flex justify-content-center mt-3 mb-3">
+                    <nav class="border border-dark rounded p-3 bg-black d-flex justify-content-between" style="width: 50%;">
+                        <input id="search-bar" type="search" placeholder="Search password" aria-label="Search"
+                            class="border border-0 bg-black text-light w-100">
                         <span><i class="fa-solid fa-magnifying-glass text-light fs-5"></i></span>
                     </nav>
                 </div>
+
 
                 {{-- FAVOURITES LIST --}}
                 @foreach ($favouritesPassword as $favourite)

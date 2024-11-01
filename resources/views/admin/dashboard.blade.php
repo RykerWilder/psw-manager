@@ -26,21 +26,22 @@
             // Mischiamo i caratteri per rendere la password più imprevedibile
             password = password.split('').sort(() => Math.random() - 0.5).join('');
 
-            console.log('ciao');
             const containerPassword = document.querySelector('#password');
             containerPassword.innerHTML = password;
             return password;
         }
 
-        function copy(id) {
-            const input = document.createElement('input'); // Crea un nuovo elemento <input> temporaneo
-            const area = document.getElementById(id).value; // Ottiene il valore dell'elemento con l'id passato
-            input.setAttribute('value', area); // Imposta il valore dell'input temporaneo con il testo da copiare
-            document.body.appendChild(input); // Aggiunge l'input temporaneo al DOM (necessario per copiare il contenuto)
-            input.select(); // Seleziona il contenuto dell'input temporaneo
-            const risultato = document.execCommand('copy'); // Esegue il comando di copia
-            document.body.removeChild(input); // Rimuove l'input temporaneo dal DOM
-            return risultato; // Restituisce il risultato del comando di copia (true se ha avuto successo)
+        //COPY PASSWORD
+        function copy(elementId) {
+            const text = document.getElementById(elementId).textContent; // Prendi il testo dall'elemento con ID 'password'
+            const toastMessage = document.getElementById('toast-message');
+
+            // Usa l'API Clipboard per copiare il testo
+            navigator.clipboard.writeText(text).then(() => {
+                toastMessage.classList.remove('d-none');
+            }).catch(err => {
+                console.error("Errore durante la copia della password: ", err);
+            });
         }
     </script>
     <div class="container">
@@ -60,7 +61,7 @@
                             </div>
                         @endif
 
-                        Welcome back <strong> {{ ucfirst($user->name) }}</strong>!
+                        Welcome back <strong>{{ ucfirst($user->name) }}</strong>!
                     </div>
                 </div>
 
@@ -68,8 +69,11 @@
                 <div>
                     <h5 class="mb-3 mt-5 text-center">Here you can generate your safety password.</h5>
                     <div class="gap-2 border border-dark p-3 rounded">
-                        <label for="customRange2" class="form-label">Choose length of your password</label>
-                        <input type="range" class="form-range" min="0" max="3" id="customRange2">
+
+                        <div class="border border-dark rounded p-3">
+                            <label for="customRange2" class="form-label">Choose your password length</label>
+                            <input type="range" class="form-range" min="0" max="3" id="customRange2">
+                        </div>
 
                         <div class="d-flex justify-content-between gap-2 p-3">
                             <button id="button" onclick="generatePassword()" class="btn fs-4 border border-dark"
@@ -78,6 +82,21 @@
                             </div>
                             <button id="button" onclick="copy('password')" class="btn fs-4 border border-dark"
                                 title="Copy"><i class="fa-solid fa-copy"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- TOAST MESSAGE --}}
+                <div id="toast-message" class="container position-absolute p-3 border border-dark rounded d-none" style="width: 300px; bottom: 20px; right: 20px">
+                    <div id="liveToast" class="row" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="col">
+                            <div class="toast-header">
+                                <strong class="me-auto">iLock</strong>
+                                <small>now</small>
+                            </div>
+                            <div class="toast-body">
+                                Password Copied Successfully!
+                            </div>
                         </div>
                     </div>
                 </div>
