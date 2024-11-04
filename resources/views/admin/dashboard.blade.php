@@ -2,8 +2,20 @@
 
 @section('content')
     <script>
+        //PASSWORD LENGTH
+
+        let pswLength = null;
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputRange = document.getElementById('custom-range');
+
+            inputRange.addEventListener('change', function() {
+                pswLength = inputRange.value * 4;
+                console.log(pswLength);
+            });
+        })
+
         //PASSWORD GENERATOR
-        function generatePassword(length = 12) {
+        function generatePassword(pswLength) {
             const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const lowercase = "abcdefghijklmnopqrstuvwxyz";
             const numbers = "0123456789";
@@ -19,8 +31,8 @@
             password += symbols[Math.floor(Math.random() * symbols.length)];
 
             // Aggiungiamo i caratteri rimanenti in modo casuale
-            for (let i = password.length; i < length; i++) {
-                password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
+            for (let i = password.pswLength; i < pswLength; i++) {
+                password += allCharacters[Math.floor(Math.random() * allCharacters.pswLength)];
             }
 
             // Mischiamo i caratteri per rendere la password più imprevedibile
@@ -28,7 +40,6 @@
 
             const containerPassword = document.querySelector('#password');
             containerPassword.innerHTML = password;
-            return password;
         }
 
         //COPY PASSWORD
@@ -39,6 +50,10 @@
             // Usa l'API Clipboard per copiare il testo
             navigator.clipboard.writeText(text).then(() => {
                 toastMessage.classList.remove('d-none');
+
+                setTimeout(() => {
+                    toastMessage.classList.add('d-none');
+                }, 4000);
             }).catch(err => {
                 console.error("Errore durante la copia della password: ", err);
             });
@@ -71,8 +86,9 @@
                     <div class="gap-2 border border-dark p-3 rounded">
 
                         <div class="border border-dark rounded p-3">
-                            <label for="customRange2" class="form-label">Choose your password length</label>
-                            <input type="range" class="form-range" min="0" max="3" id="customRange2">
+                            <label for="custom-range" class="form-label">Choose your password
+                                length</label>
+                            <input type="range" class="form-range" min="2" max="5" id="custom-range">
                         </div>
 
                         <div class="d-flex justify-content-between gap-2 p-3">
@@ -87,7 +103,8 @@
                 </div>
 
                 {{-- TOAST MESSAGE --}}
-                <div id="toast-message" class="container position-absolute p-3 border border-dark rounded d-none" style="width: 300px; bottom: 20px; right: 20px">
+                <div id="toast-message" class="container position-absolute p-3 border border-dark rounded d-none"
+                    style="width: 300px; bottom: 20px; right: 20px">
                     <div id="liveToast" class="row" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="col">
                             <div class="toast-header">
