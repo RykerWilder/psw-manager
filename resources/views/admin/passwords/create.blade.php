@@ -48,7 +48,7 @@
                         title="Choose your color" name="color">
                 </div>
 
-                <button id="button" type="submit" class="btn border border-dark mt-4">Create</button>
+                <button type="submit" class="btn border border-dark mt-4 ms-button">Create</button>
             </form>
 
         </div>

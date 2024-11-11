@@ -4,7 +4,7 @@
     <script>
         //PASSWORD LENGTH
 
-        let pswLength = null;
+        let pswLength = 12;
         document.addEventListener('DOMContentLoaded', function() {
             const inputRange = document.getElementById('custom-range');
 
@@ -15,7 +15,7 @@
         })
 
         //PASSWORD GENERATOR
-        function generatePassword(pswLength) {
+        function generatePassword(length) {
             const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const lowercase = "abcdefghijklmnopqrstuvwxyz";
             const numbers = "0123456789";
@@ -31,8 +31,8 @@
             password += symbols[Math.floor(Math.random() * symbols.length)];
 
             // Aggiungiamo i caratteri rimanenti in modo casuale
-            for (let i = password.pswLength; i < pswLength; i++) {
-                password += allCharacters[Math.floor(Math.random() * allCharacters.pswLength)];
+            for (let i = password.length; i < length; i++) {
+                password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
             }
 
             // Mischiamo i caratteri per rendere la password più imprevedibile
@@ -88,15 +88,16 @@
                         <div class="border border-dark rounded p-3">
                             <label for="custom-range" class="form-label">Choose your password
                                 length</label>
-                            <input type="range" class="form-range" min="2" max="5" id="custom-range">
+                            <input type="range" class="form-range" min="2" max="5" id="custom-range" value="3">
                         </div>
 
                         <div class="d-flex justify-content-between gap-2 p-3">
-                            <button id="button" onclick="generatePassword()" class="btn fs-4 border border-dark"
-                                title="Generate Password"><i class="fa-solid fa-repeat"></i></button>
+                            <button onclick="generatePassword(pswLength)"
+                                class="btn fs-4 border border-dark ms-button" title="Generate Password"><i
+                                    class="fa-solid fa-repeat"></i></button>
                             <div id="password" class="rounded border border-dark w-100 text-center">
                             </div>
-                            <button id="button" onclick="copy('password')" class="btn fs-4 border border-dark"
+                            <button onclick="copy('password')" class="btn fs-4 border border-dark ms-button"
                                 title="Copy"><i class="fa-solid fa-copy"></i></button>
                         </div>
                     </div>

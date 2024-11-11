@@ -63,7 +63,9 @@ class UserPasswordController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = Auth::user();
+        $password = UserPassword::where('id', $user->id );
+        return view('admin.passwords.edit', compact('password'));
     }
 
     /**
@@ -77,8 +79,11 @@ class UserPasswordController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(UserPassword $userPassword)
     {
-        //
+        $password = UserPassword::findOrFail($userPassword->id);
+        $password->delete();
+
+        return redirect()->route('admin.passwords.index')->with('message', 'Password eliminata correttamente'); 
     }
 }

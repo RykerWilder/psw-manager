@@ -38,6 +38,12 @@
                     </nav>
                 </div>
 
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
                 {{-- PASSWORDS LIST --}}
                 @foreach ($passwords as $passwordInfo)
                     @if ($passwordInfo->user_id === Auth::id())
