@@ -61,29 +61,36 @@ class UserPasswordController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(UserPassword $password)
     {
-        $user = Auth::user();
-        $password = UserPassword::where('id', $user->id );
         return view('admin.passwords.edit', compact('password'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, UserPassword $password)
     {
-        //
+        $data = $request->all();
+
+        $password->user_id = Auth::id();
+        $password->name = $data['name'];
+        $password->username = $data['username'];
+        $password->password = $data['password'];
+        $password->favourite = isset($data['favourite']) && $data['favourite'] !== '' ? (int) $data['favourite'] : 0;
+        $password->color = $data['color'];
+        $password->update();
+        return view('admin.passwords.show', compact('password'))->with('message', 'CARAMBA');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserPassword $userPassword)
+    public function destroy(UserPassword $password)
     {
-        $password = UserPassword::findOrFail($userPassword->id);
+        $password = UserPassword::findOrFail($password->id);
         $password->delete();
 
-        return redirect()->route('admin.passwords.index')->with('message', 'Password eliminata correttamente'); 
+        return redirect()->route('admin.passwords.index')->with('message', 'Password eliminata correttamente');
     }
 }

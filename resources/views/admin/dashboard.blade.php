@@ -19,7 +19,7 @@
             const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const lowercase = "abcdefghijklmnopqrstuvwxyz";
             const numbers = "0123456789";
-            const symbols = "!@#$%^&*()_+[]{}|;:,.<>?";
+            const symbols = "!@#$%^&*()_+[]{}|;:,.?";
 
             const allCharacters = uppercase + lowercase + numbers + symbols;
             let password = "";
@@ -34,7 +34,7 @@
             for (let i = password.length; i < length; i++) {
                 password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
             }
-
+            
             // Mischiamo i caratteri per rendere la password più imprevedibile
             password = password.split('').sort(() => Math.random() - 0.5).join('');
 

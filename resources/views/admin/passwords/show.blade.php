@@ -40,6 +40,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col">
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <h1>{{ $password->name }}</h1>
                 <div class="d-flex gap-3 mb-5">
 
@@ -59,7 +64,8 @@
                 </div>
 
                 {{-- DELETE MODAL --}}
-                <div class="ms-modal-delete position-absolute start-50 translate-middle-x border border-dark rounded p-3 d-none">
+                <div
+                    class="ms-modal-delete position-absolute start-50 translate-middle-x border border-dark rounded p-3 d-none">
                     <div class="d-flex flex-column justify-content-space-between">
                         <h3 class="mb-5">Are you sure to delete this password?</h3>
                         <h6>This action is irreversible.</h6>
