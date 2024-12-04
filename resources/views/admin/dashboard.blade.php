@@ -6,11 +6,13 @@
 
         let pswLength = 12;
         document.addEventListener('DOMContentLoaded', function() {
-            const inputRange = document.getElementById('custom-range');
 
+            const inputRange = document.getElementById('custom-range');
+            const changeLength = document.querySelector('.password-length');
+            
             inputRange.addEventListener('change', function() {
                 pswLength = inputRange.value * 4;
-                console.log(pswLength);
+                changeLength.innerHTML = pswLength;
             });
         })
 
@@ -87,7 +89,7 @@
 
                         <div class="border border-dark rounded p-3">
                             <label for="custom-range" class="form-label">Choose your password
-                                length</label>
+                                length: <strong class="password-length">12</strong></label>
                             <input type="range" class="form-range" min="2" max="5" id="custom-range" value="3">
                         </div>
 
