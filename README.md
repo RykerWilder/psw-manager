@@ -18,12 +18,12 @@ Follow these steps to set up the project on your local machine:
 **⁠Clone the Repository**:
 
 ```bash
-    git clone https://github.com/FabioMasciarelli/Psw-manager.git
+git clone https://github.com/FabioMasciarelli/Psw-manager.git
 ```
 ```bash
-    cd Psw-manager
+cd Psw-manager
 ```
-   
+
 
 **Install Dependencies**:
 
@@ -55,20 +55,9 @@ php artisan key:generate
 Open the .env file and set your database credentials:
 
 ```bash
-WINDOWS
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-```
-
-```bash
-MacOS
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=8889
 DB_DATABASE=your_database_name
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
