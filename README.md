@@ -13,34 +13,46 @@ Psw-manager is a Laravel-based application designed to securely manage passwords
 
 Follow these steps to set up the project on your local machine:
 
-```bash
 
-    1.⁠ ⁠Clone the Repository:
+
+**⁠Clone the Repository**:
+
+```bash
     git clone https://github.com/FabioMasciarelli/Psw-manager.git
     cd Psw-manager
+```
    
 
-	2.	Install Dependencies:
+**Install Dependencies**:
+
 Run the following commands to install PHP and Node.js dependencies:
 
+```bash
 composer install
+```
+```bash
 npm install
+```
 
 
-	3.	Set Up the Environment:
-	•	Copy the .env.example file to create a .env file:
+**Set Up the Environment**:
+
+Copy the .env.example file to create a .env file:
 
 cp .env.example .env
 
 
-	•	Generate the application key:
+**Generate the application key**:
 
+```bash
 php artisan key:generate
+```
 
 
-	4.	Database Configuration:
-	•	Open the .env file and set your database credentials:
+**Database Configuration**:
+Open the .env file and set your database credentials:
 
+```bash
 WINDOWS
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -48,7 +60,9 @@ DB_PORT=3306
 DB_DATABASE=your_database_name
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+```
 
+```bash
 MacOS
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -56,33 +70,38 @@ DB_PORT=8889
 DB_DATABASE=your_database_name
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+```
 
 
+**Run migrations to set up the database schema**:
 
-	•	Run migrations to set up the database schema:
-
+```bash
 php artisan migrate
+```
 
+**Compile the frontend assets**:
 
-	5.	Build Assets:
-Compile the frontend assets:
-
+```bash
 npm run build
+```
 
 
-	6.	Start the Development Server:
+**Start the Development Server**:
 Start the application using Laravel’s built-in server:
 
+```bash
 php artisan serve
+```
 
 The application will be available at http://localhost:8000.
 
-```
 
 ## Usage
-	•	Register a new user account or log in with existing credentials.
-	•	Add passwords: Navigate to the “Add Password” section to securely store new credentials.
-	•	View and manage passwords: Use the “My Passwords” section to update or delete saved passwords.
+
+1.	Register a new user account or log in with existing credentials.
+2.	Add passwords: Navigate to the “Add Password” section to securely store new credentials.
+3.	View and manage passwords: Use the “My Passwords” section to update or delete saved passwords.
+
 
 ## Contributing
 
