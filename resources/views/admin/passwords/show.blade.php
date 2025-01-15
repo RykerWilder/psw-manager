@@ -45,22 +45,24 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                <h1>{{ $password->name }}</h1>
-                <div class="d-flex gap-3 mb-5">
-
-                    {{-- EDIT BUTTON --}}
-                    <a href="{{ route('admin.passwords.edit', ['password' => $password->id]) }}"
-                        class="btn fs-4 border border-dark ms-button"><i class="fa-solid fa-pen"></i></a>
-
-                    {{-- DELETE BUTTON --}}
-                    <button type="submit" class="ms-openModalDelete btn fs-4 border border-dark ms-button" title="Delete"><i
-                            class="fa-solid fa-trash-can "></i></button>
+                <div class="d-flex justify-content-center gap-5 mt-3">
+                    <h1>{{ $password->name }}</h1>
+                    <div class="d-flex gap-3 mb-5">
+    
+                        {{-- EDIT BUTTON --}}
+                        <a href="{{ route('admin.passwords.edit', ['password' => $password->id]) }}"
+                            class="btn fs-4 border border-dark ms-button"><i class="fa-solid fa-pen"></i></a>
+    
+                        {{-- DELETE BUTTON --}}
+                        <button type="submit" class="ms-openModalDelete btn fs-4 border border-dark ms-button" title="Delete"><i
+                                class="fa-solid fa-trash-can "></i></button>
+                    </div>
                 </div>
                 <div>
                     <h4>Username: {{ $password->username }} </h4>
-                    <h4>Password: {{ $password->password }}</h4>
+                    <h4>Password: {{ $decryptPsw }}</h4>
                     <h5>Tag: {{ $password->color }}</h5>
-                    <h5>Created: {{ $password->created_at }} </h5>
+                    <h5>Created: {{ $password->created_at->format('d/m/Y') }} </h5>
                 </div>
 
                 {{-- DELETE MODAL --}}

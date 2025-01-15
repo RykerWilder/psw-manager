@@ -22,7 +22,7 @@
 
             {{-- password --}}
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" name="password" value="{{ $password->password }}">
+                <input type="password" class="form-control" id="floatingPassword" name="password" value="{{ $decryptPsw }}">
                 <label for="floatingPassword">Password*</label>
             </div>
 

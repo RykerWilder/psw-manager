@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class UserPasswordController extends Controller
 {
@@ -35,11 +36,12 @@ class UserPasswordController extends Controller
     {
         $data = $request->all();
 
+        
         $newUserPassword = new UserPassword();
         $newUserPassword->user_id = Auth::id();
         $newUserPassword->name = $data['name'];
         $newUserPassword->username = $data['username'];
-        $newUserPassword->password = $data['password'];
+        $newUserPassword->password = Crypt::encryptString($data['password']);
         $newUserPassword->favourite = isset($data['favourite']) && $data['favourite'] !== '' ? (int) $data['favourite'] : 0;
         // $newUserPassword->favourite = (int) $data['favourite'];
         $newUserPassword->color = $data['color'];
@@ -55,7 +57,8 @@ class UserPasswordController extends Controller
     public function show($id)
     {
         $password = UserPassword::findOrFail($id);
-        return view('admin.passwords.show', compact('password'));
+        $decryptPsw = Crypt::decryptString($password->password);
+        return view('admin.passwords.show', compact('password','decryptPsw'));
     }
 
     /**
@@ -63,7 +66,8 @@ class UserPasswordController extends Controller
      */
     public function edit(UserPassword $password)
     {
-        return view('admin.passwords.edit', compact('password'));
+        $decryptPsw = Crypt::decryptString($password->password);
+        return view('admin.passwords.edit', compact('password','decryptPsw'));
     }
 
     /**
@@ -76,11 +80,13 @@ class UserPasswordController extends Controller
         $password->user_id = Auth::id();
         $password->name = $data['name'];
         $password->username = $data['username'];
-        $password->password = $data['password'];
+        $password->password = Crypt::encryptString($data['password']);
         $password->favourite = isset($data['favourite']) && $data['favourite'] !== '' ? (int) $data['favourite'] : 0;
         $password->color = $data['color'];
         $password->update();
-        return view('admin.passwords.show', compact('password'))->with('message', 'CARAMBA');
+
+        $decryptPsw = Crypt::decryptString($password->password);
+        return view('admin.passwords.show', compact('password', 'decryptPsw'))->with('message', 'CARAMBA');
     }
 
     /**
