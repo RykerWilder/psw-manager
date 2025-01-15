@@ -19,6 +19,8 @@ Follow these steps to set up the project on your local machine:
 
 ```bash
     git clone https://github.com/FabioMasciarelli/Psw-manager.git
+```
+```bash
     cd Psw-manager
 ```
    
@@ -106,9 +108,9 @@ The application will be available at http://localhost:8000.
 ## Contributing
 
 Contributions are **welcome**! If you’d like to contribute:
-	1.	Fork the repository.
-	2.	Create a new branch for your feature or bugfix.
-	3.	Submit a pull request with a clear description of your changes.
+1.	Fork the repository.
+2.	Create a new branch for your feature or bugfix.
+3.	Submit a pull request with a clear description of your changes.
 
 
 
