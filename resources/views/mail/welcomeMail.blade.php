@@ -16,7 +16,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <h1>Hi {{ $name }},</h1>
+                <h1>Hi {{ ucfirst($name) }},</h1>
                 <h3>welcome on iLock!</h3>
 
                 
