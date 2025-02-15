@@ -64,7 +64,7 @@
     <div class="container-dashboard">
         {{-- WELCOME CARD --}}
         <div class="border welcome-card">
-            <h3 class="border">{{ __('iLock') }}</h3>
+            <h1 class="border">{{ __('iLock') }}</h1>
             <div class="">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
