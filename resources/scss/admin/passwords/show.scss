@@ -1,0 +1,60 @@
+.show-password {
+
+    h1 {
+        text-align: center;
+    }
+
+    .edit {
+        display: flex;
+        gap: 20px;
+
+        a {
+            padding: 10px 15px;
+            color: black;
+            background-color: lightgray;
+            transition: background-color .3s linear;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: lightgrey;
+            transition: background-color .3s linear;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
+
+.modal-delete {
+    padding: 10px;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    .edit {
+        display: flex;
+        justify-content: end;
+        gap: 20px;
+
+        form {
+            button {
+                background-color: red;
+                border: 0;
+                padding: 10px;
+                color: white;
+            }
+        }
+    }
+}

@@ -26,6 +26,11 @@
         });
     </script>
 
+    @if (session('message'))
+        <div class="message">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="passwords-list-container">
         {{-- SEARCHBAR --}}
         <div class="searchbar">
@@ -35,11 +40,6 @@
             </nav>
         </div>
 
-        @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
 
         {{-- PASSWORDS LIST --}}
         <div class="passwords-list">
