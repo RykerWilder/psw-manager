@@ -46,9 +46,25 @@
         flex-direction: column;
         gap: 20px;
 
-        #password-card {
+        #favourite-card {
+            padding: 20px;
+            text-decoration: none;
+            color: black;
+            transition: background-color .3s linear;
+
             &:hover {
                 background-color: lightgrey;
+            }
+
+            .password-info {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .tag {
+                height: 30px;
+                aspect-ratio: 1;
+                border-radius: 50%;
             }
         }
     }

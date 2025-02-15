@@ -38,14 +38,14 @@
         <div class="favourites-list">
             @foreach ($favouritesPassword as $favourite)
                 @if ($favourite->user_id === Auth::id() && $favourite->favourite === 1)
-                    <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $favourite->id]) }}"
+                    <a id="favourite-card" href="{{ route('admin.passwords.show', ['password' => $favourite->id]) }}"
                         class="border" aria-current="true">
-                        <div class="">
+                        <div class="password-info">
                             <h5 class="">{{ ucfirst($favourite->name) }}</h5>
                             <span><i
                                     class="fa-{{ $favourite->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
                         </div>
-                        <div style="background-color: {{ $favourite->color }};" class="">
+                        <div style="background-color: {{ $favourite->color }};" class="tag">
                         </div>
                     </a>
                 @endif
