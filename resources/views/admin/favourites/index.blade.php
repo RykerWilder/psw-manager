@@ -4,7 +4,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchBar = document.getElementById('search-bar');
-            const passwordCards = document.querySelectorAll('#password-card');
+            const passwordCards = document.querySelectorAll('#favourite-card');
 
             // Aggiungi un event listener per rilevare i cambiamenti nella barra di ricerca
             searchBar.addEventListener('keyup', function() {
@@ -41,7 +41,7 @@
                     <a id="favourite-card" href="{{ route('admin.passwords.show', ['password' => $favourite->id]) }}"
                         class="border" aria-current="true">
                         <div class="password-info">
-                            <h5 class="">{{ ucfirst($favourite->name) }}</h5>
+                            <h5>{{ ucfirst($favourite->name) }}</h5>
                             <span><i
                                     class="fa-{{ $favourite->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
                         </div>
