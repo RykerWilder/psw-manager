@@ -26,41 +26,38 @@
         });
     </script>
 
-    <div class="container">
-        <div class="row">
-            <div class="col d-flex flex-column gap-3 p-3">
+    <div class="passwords-list-container">
+        {{-- SEARCHBAR --}}
+        <div class="searchbar">
+            <nav class="border">
+                <input id="search-bar" type="search" placeholder="Search password" aria-label="Search" class="">
+                <span class="border"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </nav>
+        </div>
 
-                {{-- SEARCHBAR --}}
-                <div class="container-fluid d-flex justify-content-center mt-3 mb-3">
-                    <nav class="border border-dark rounded p-3 bg-black d-flex justify-content-between" style="width: 50%;">
-                        <input id="search-bar" type="search" placeholder="Search password" aria-label="Search" class="border border-0 bg-black text-light w-100">
-                        <span><i class="fa-solid fa-magnifying-glass text-light fs-5"></i></span>
-                    </nav>
-                </div>
-
-                @if (session('message'))
-                    <div class="alert alert-success">
-                        {{ session('message') }}
-                    </div>
-                @endif
-
-                {{-- PASSWORDS LIST --}}
-                @foreach ($passwords as $passwordInfo)
-                    @if ($passwordInfo->user_id === Auth::id())
-                        <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $passwordInfo->id]) }}"
-                            class="border border-dark rounded p-3 d-block nav-link" aria-current="true">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">{{ ucfirst($passwordInfo->name) }}</h5>
-                                <span><i
-                                        class="fa-{{ $passwordInfo->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
-                            </div>
-                            <div style="background-color: {{ $passwordInfo->color }}; height: 20px; aspect-ratio: 1;"
-                                class="rounded-circle p-2">
-                            </div>
-                        </a>
-                    @endif
-                @endforeach
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
             </div>
+        @endif
+
+        {{-- PASSWORDS LIST --}}
+        <div class="passwords-list">
+            @foreach ($passwords as $passwordInfo)
+                @if ($passwordInfo->user_id === Auth::id())
+                    <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $passwordInfo->id]) }}"
+                        class="border border-dark rounded p-3 d-block nav-link" aria-current="true">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ ucfirst($passwordInfo->name) }}</h5>
+                            <span><i
+                                    class="fa-{{ $passwordInfo->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
+                        </div>
+                        <div style="background-color: {{ $passwordInfo->color }}; height: 20px; aspect-ratio: 1;"
+                            class="rounded-circle p-2">
+                        </div>
+                    </a>
+                @endif
+            @endforeach
         </div>
     </div>
 @endsection
