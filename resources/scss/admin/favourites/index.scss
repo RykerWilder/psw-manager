@@ -1,4 +1,4 @@
-.passwords-list-container {
+.favourites-list-container {
     padding: 100px;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
                 padding: 5px;
                 width: 95%;
                 border: 0;
-        
+
                 &:focus {
                     outline: none;
                     box-shadow: none;
@@ -40,32 +40,16 @@
         }
     }
 
-    .passwords-list {
+    .favourites-list {
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 20px;
 
         #password-card {
-            padding: 20px;
-            text-decoration: none;
-            color: black;
-            transition: background-color .3s linear;
-
             &:hover {
                 background-color: lightgrey;
             }
-
-            .password-info {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .tag {
-                height: 30px;
-                aspect-ratio: 1;
-                border-radius: 50%;
-            } 
         }
     }
 }

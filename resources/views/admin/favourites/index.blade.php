@@ -25,39 +25,31 @@
             });
         });
     </script>
-    <div class="container">
-        <div class="row">
-            <div class="col d-flex flex-column gap-3 p-3">
+    <div class="favourites-list-container">
+        {{-- SEARCHBAR --}}
+        <div class="searchbar">
+            <nav class="border">
+                <input id="search-bar" type="search" placeholder="Search password" aria-label="Search" class="">
+                <span class="border"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </nav>
+        </div>
 
-                {{-- SEARCHBAR --}}
-                <div class="container-fluid d-flex justify-content-center mt-3 mb-3">
-                    <nav class="border border-dark rounded p-3 bg-black d-flex justify-content-between" style="width: 50%;">
-                        <input id="search-bar" type="search" placeholder="Search password" aria-label="Search"
-                            class="border border-0 bg-black text-light w-100">
-                        <span><i class="fa-solid fa-magnifying-glass text-light fs-5"></i></span>
-                    </nav>
-                </div>
-
-
-                {{-- FAVOURITES LIST --}}
-                @foreach ($favouritesPassword as $favourite)
-                    @if ($favourite->user_id === Auth::id() && $favourite->favourite === 1)
-                        <div class="list-group">
-                            <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $favourite->id]) }}"
-                                class="border border-dark rounded p-3 d-block nav-link" aria-current="true">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">{{ ucfirst($favourite->name) }}</h5>
-                                    <span><i
-                                            class="fa-{{ $favourite->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
-                                </div>
-                                <div style="background-color: {{ $favourite->color }}; height: 20px; aspect-ratio: 1;"
-                                    class="rounded-circle p-2">
-                                </div>
-                            </a>
+        {{-- FAVOURITES LIST --}}
+        <div class="favourites-list">
+            @foreach ($favouritesPassword as $favourite)
+                @if ($favourite->user_id === Auth::id() && $favourite->favourite === 1)
+                    <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $favourite->id]) }}"
+                        class="border" aria-current="true">
+                        <div class="">
+                            <h5 class="">{{ ucfirst($favourite->name) }}</h5>
+                            <span><i
+                                    class="fa-{{ $favourite->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
                         </div>
-                    @endif
-                @endforeach
-            </div>
+                        <div style="background-color: {{ $favourite->color }};" class="">
+                        </div>
+                    </a>
+                @endif
+            @endforeach
         </div>
     </div>
 @endsection

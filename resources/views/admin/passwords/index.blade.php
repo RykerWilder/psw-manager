@@ -46,14 +46,14 @@
             @foreach ($passwords as $passwordInfo)
                 @if ($passwordInfo->user_id === Auth::id())
                     <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $passwordInfo->id]) }}"
-                        class="border border-dark rounded p-3 d-block nav-link" aria-current="true">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ ucfirst($passwordInfo->name) }}</h5>
+                        class="border" aria-current="true">
+                        <div class="password-info">
+                            <h5 class="">{{ ucfirst($passwordInfo->name) }}</h5>
                             <span><i
                                     class="fa-{{ $passwordInfo->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
                         </div>
-                        <div style="background-color: {{ $passwordInfo->color }}; height: 20px; aspect-ratio: 1;"
-                            class="rounded-circle p-2">
+                        <div style="background-color: {{ $passwordInfo->color }};"
+                            class="tag">
                         </div>
                     </a>
                 @endif
