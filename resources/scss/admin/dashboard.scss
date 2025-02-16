@@ -36,13 +36,14 @@
             gap: 30px;
 
             button {
-                background-color: transparent;
-                padding: 5px 15px;
-                transition: background-color .3s linear;
+                padding: 10px 20px;
+                background-color: lightgrey;
+                transition: background-color, box-shadow .3s linear;
 
                 &:hover {
                     background-color: black;
                     color: white;
+                    box-shadow: 6px 6px lightgrey;
                 }
             }
 
