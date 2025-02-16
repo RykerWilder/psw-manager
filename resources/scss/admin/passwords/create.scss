@@ -1,0 +1,113 @@
+@keyframes a {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+
+    50% {
+        opacity: 0;
+        transform: scale(.8) rotateY(180deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateY(360deg);
+    }
+}
+
+.form-container {
+    padding: 50px;
+    height: 100%;
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        height: 90%;
+        display: flex;
+        gap: 120px;
+        margin-top: 50px;
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            align-items: start;
+            width: 100%;
+
+            .form-input {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                input {
+                    padding: 10px;
+                    box-shadow: 6px 6px lightgrey;
+                    text-align: center;
+                }
+            }
+
+            .check {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                border-radius: 2px;
+                appearance: none;
+                background-color: #d3d3d3;
+                transition: all .3s;
+            }
+
+            .check::before {
+                content: '';
+                position: absolute;
+                border: solid #fff;
+                display: block;
+                width: .3em;
+                height: .6em;
+                border-width: 0 .2em .2em 0;
+                z-index: 1;
+                opacity: 0;
+                right: calc(50% - .3em);
+                top: calc(50% - .6em);
+                transform: rotate(0deg);
+                transition: all .3s;
+                transform-origin: center center;
+            }
+
+            .check:checked {
+                animation: a .3s ease-in forwards;
+                background-color: #78be78;
+            }
+
+            .check:checked::before {
+                opacity: 1;
+                transform: rotate(405deg);
+            }
+
+            .color-picker {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                input {
+                    border: 0;
+                    border-radius: 8px;
+                    cursor: pointer;
+                }
+            }
+
+            button {
+                padding: 10px 20px;
+                background-color: lightgrey;
+                transition: background-color, box-shadow .3s linear;
+
+                &:hover {
+                    background-color: black;
+                    color: white;
+                    box-shadow: 6px 6px lightgrey;
+                }
+            }
+        }
+    }
+}
