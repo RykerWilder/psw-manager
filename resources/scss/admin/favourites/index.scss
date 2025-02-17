@@ -50,10 +50,11 @@
             padding: 20px;
             text-decoration: none;
             color: black;
-            transition: background-color .3s linear;
+            transition: background-color, box-shadow .3s linear;
 
             &:hover {
                 background-color: lightgrey;
+                box-shadow: 6px 6px black;
             }
 
             .password-info {
