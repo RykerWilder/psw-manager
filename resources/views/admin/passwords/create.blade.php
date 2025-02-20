@@ -34,10 +34,10 @@
     
             {{-- favourite --}}
             <div class="">
+                <input checked="" class="check" type="checkbox" value="1" id="flexCheckDefault" name="favourite">
                 <label class="" for="flexCheckDefault">
                     Add to favourites
                 </label>
-                <input checked="" class="check" type="checkbox" value="1" id="flexCheckDefault" name="favourite">
             </div>
     
             {{-- color picker --}}

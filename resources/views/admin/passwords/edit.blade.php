@@ -32,9 +32,9 @@
 
                 {{-- favourite --}}
                 <div class="">
-                    <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="favourite"
+                    <input class="check" type="checkbox" value="1" id="flexCheckDefault" name="favourite"
                         @checked($password->favourite)>
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="" for="flexCheckDefault">
                         Add to favourites
                     </label>
                 </div>
