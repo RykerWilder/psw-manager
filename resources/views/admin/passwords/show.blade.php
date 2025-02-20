@@ -56,7 +56,7 @@
         </div>
         <div>
             <h4>Username: {{ $password->username }} </h4>
-            <h4>Password: {{ $decryptPsw }}</h4>
+            <h4>Password: <span>{{ $decryptPsw }}</span><button><i class="fa-solid fa-eye"></i></button></h4>
             <h5>Tag: {{ $password->color }}</h5>
             <h5>Created: {{ $password->created_at->format('d/m/Y') }} </h5>
         </div>
