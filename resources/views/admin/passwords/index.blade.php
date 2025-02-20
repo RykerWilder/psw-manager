@@ -48,8 +48,7 @@
                     <a id="password-card" href="{{ route('admin.passwords.show', ['password' => $passwordInfo->id]) }}"
                         class="border" aria-current="true">
                         <div class="password-info">
-                            <div style="background-color: {{ $passwordInfo->color }};"
-                                class="tag">
+                            <div style="background-color: {{ $passwordInfo->color }};" class="tag">
                             </div>
                             <h5>{{ ucfirst($passwordInfo->name) }}</h5>
                             <span><i

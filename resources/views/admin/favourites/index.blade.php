@@ -41,11 +41,11 @@
                     <a id="favourite-card" href="{{ route('admin.passwords.show', ['password' => $favourite->id]) }}"
                         class="border" aria-current="true">
                         <div class="password-info">
+                            <div style="background-color: {{ $favourite->color }};" class="tag">
+                            </div>
                             <h5>{{ ucfirst($favourite->name) }}</h5>
                             <span><i
                                     class="fa-{{ $favourite->favourite === 1 ? 'solid' : 'regular' }} fa-star text-warning fs-5"></i>
-                        </div>
-                        <div style="background-color: {{ $favourite->color }};" class="tag">
                         </div>
                     </a>
                 @endif
