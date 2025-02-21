@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <script>
+    <script type="module">
         const $one = document.querySelector.bind(document);
         const $all = document.querySelectorAll.bind(document);
 
@@ -40,7 +40,7 @@
             // SHOW PASSWORD
             const eye = $one('.eye');
             const hiddenEye = $one('.hidden-eye');
-            const password = $one('.password');
+            const password = $one('#password');
             const hiddenPsw = $one('.hidden-psw');
 
             eye.addEventListener('click', function() {
@@ -57,7 +57,16 @@
                 eye.classList.remove('d-none');
             });
             // SHOW PASSWORD
+
+            //COPY PASSWORD
+            function copy(elementId) {
+                const text = document.getElementById(elementId).textContent;
+                console.log(text);
+                // Usa l'API Clipboard per copiare il testo
+                navigator.clipboard.writeText(text);
+            }
         });
+
     </script>
 
     @if (session('message'))
@@ -70,25 +79,31 @@
             <h1>{{ $password->name }}</h1>
             <div class="edit">
                 {{-- EDIT BUTTON --}}
-                <a href="{{ route('admin.passwords.edit', ['password' => $password->id]) }}" class="border"><i
-                        class="fa-solid fa-pen"></i></a>
+                <a href="{{ route('admin.passwords.edit', ['password' => $password->id]) }}" class="border"
+                    title="Edit Password"><i class="fa-solid fa-pen"></i></a>
                 {{-- DELETE BUTTON --}}
-                <button type="submit" class="border ms-openModalDelete" title="Delete"><i
+                <button type="submit" class="border ms-openModalDelete" title="Delete password"><i
                         class="fa-solid fa-trash-can "></i></button>
             </div>
         </div>
         <div>
             <h5>Username</h5>
-            <h3>{{ $password->username }}</h3>
+            <h3>
+                <button onclick="copy('username')"><i class="fa-solid fa-copy"></i></button>
+                <span id="username">
+                    {{ $password->username }}
+                </span>
+            </h3>
             <h5>Password</h5>
             <h3>
-                <button class="eye">
+                <button onclick="copy('password')" title="Copy password"><i class="fa-solid fa-copy"></i></button>
+                <button class="eye" title="Show password">
                     <i class="fa-solid fa-eye"></i>
                 </button>
-                <button class="hidden-eye d-none">
+                <button class="hidden-eye d-none" title="Hide password">
                     <i class="fa-solid fa-eye-slash"></i>
                 </button>
-                <span class="d-none password">{{ $decryptPsw }}</span>
+                <span class="d-none" id="password">{{ $decryptPsw }}</span>
                 <span class="hidden-psw">----------</span>
             </h3>
             <h5>Created: {{ $password->created_at->format('d/m/Y') }} </h5>
