@@ -2,6 +2,10 @@
 
     h1 {
         text-align: center;
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 8px;
     }
 
     .edit {
@@ -34,6 +38,32 @@
             }
         }
     }
+
+    h3 {
+        width: 50%;
+        background-color: lightgrey;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        .hidden-psw {
+            height: 100%;
+        }
+
+        button {
+            border: 0;
+            background-color: transparent;
+            transition: all .3s linear;
+    
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+
 }
 
 .modal-delete {
@@ -55,7 +85,7 @@
                 transition: transform, box-shadow .3s linear;
 
                 &:hover {
-                    transform: scale(1.1);   
+                    transform: scale(1.1);
                     box-shadow: 6px 6px lightgrey;
                 }
             }

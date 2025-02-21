@@ -7,12 +7,13 @@
 
         document.addEventListener('DOMContentLoaded', function() {
 
+            // MODAL DELETE
             const openModalDelete = $one('.ms-openModalDelete');
             const closeModalDelete = $one('.ms-closeModalDelete');
 
             openModalDelete.addEventListener('click', function() {
 
-                console.log('open modal');
+                //console.log('open modal');
 
                 const modalDelete = $one('.modal-delete');
                 modalDelete.classList.remove('d-none');
@@ -26,7 +27,7 @@
 
             closeModalDelete.addEventListener('click', function() {
 
-                console.log('close modal');
+                //console.log('close modal');
 
                 const modalDelete = $one('.modal-delete');
                 modalDelete.classList.add('d-none');
@@ -34,6 +35,28 @@
                 const container = $one('.show-password');
                 container.classList.remove('opacity-25');
             });
+            // MODAL DELETE
+
+            // SHOW PASSWORD
+            const eye = $one('.eye');
+            const hiddenEye = $one('.hidden-eye');
+            const password = $one('.password');
+            const hiddenPsw = $one('.hidden-psw');
+
+            eye.addEventListener('click', function() {
+                hiddenPsw.classList.add('d-none');
+                eye.classList.add('d-none');
+                hiddenEye.classList.remove('d-none');
+                password.classList.remove('d-none');
+            });
+
+            hiddenEye.addEventListener('click', function() {
+                hiddenPsw.classList.remove('d-none');
+                password.classList.add('d-none');
+                hiddenEye.classList.add('d-none');
+                eye.classList.remove('d-none');
+            });
+            // SHOW PASSWORD
         });
     </script>
 
@@ -55,9 +78,19 @@
             </div>
         </div>
         <div>
-            <h4>Username: {{ $password->username }} </h4>
-            <h4>Password: <span>{{ $decryptPsw }}</span><button><i class="fa-solid fa-eye"></i></button></h4>
-            <h5>Tag: {{ $password->color }}</h5>
+            <h5>Username</h5>
+            <h3>{{ $password->username }}</h3>
+            <h5>Password</h5>
+            <h3>
+                <button class="eye">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+                <button class="hidden-eye d-none">
+                    <i class="fa-solid fa-eye-slash"></i>
+                </button>
+                <span class="d-none password">{{ $decryptPsw }}</span>
+                <span class="hidden-psw">----------</span>
+            </h3>
             <h5>Created: {{ $password->created_at->format('d/m/Y') }} </h5>
         </div>
     </div>
