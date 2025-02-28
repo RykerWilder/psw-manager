@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <script type="module">
+    <script>
         const $one = document.querySelector.bind(document);
         const $all = document.querySelectorAll.bind(document);
 
@@ -57,16 +57,15 @@
                 eye.classList.remove('d-none');
             });
             // SHOW PASSWORD
-
-            //COPY PASSWORD
-            function copy(elementId) {
-                const text = document.getElementById(elementId).textContent;
-                console.log(text);
-                // Usa l'API Clipboard per copiare il testo
-                navigator.clipboard.writeText(text);
-            }
         });
 
+        //COPY PASSWORD
+        function copy(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            console.log(text);
+            // Usa l'API Clipboard per copiare il testo
+            navigator.clipboard.writeText(text);
+        }
     </script>
 
     @if (session('message'))
