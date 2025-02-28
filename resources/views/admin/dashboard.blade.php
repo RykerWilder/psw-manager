@@ -1,71 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-    <script>
-        //PASSWORD LENGTH
+    <script src="{{ asset('js/admin/dashboard.js') }}"></script>
 
-        let pswLength = 12;
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const inputRange = document.getElementById('custom-range');
-            const changeLength = document.querySelector('.password-length');
-
-            inputRange.addEventListener('change', function() {
-                pswLength = inputRange.value * 4;
-                changeLength.innerHTML = pswLength;
-            });
-        })
-
-        //PASSWORD GENERATOR
-        function generatePassword(length) {
-            const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const lowercase = "abcdefghijklmnopqrstuvwxyz";
-            const numbers = "0123456789";
-            const symbols = "!@#$%^&*()_+[]{}|;:,.?";
-
-            const allCharacters = uppercase + lowercase + numbers + symbols;
-            let password = "";
-
-            // Garantiamo che la password contenga almeno un carattere di ciascun tipo
-            password += uppercase[Math.floor(Math.random() * uppercase.length)];
-            password += lowercase[Math.floor(Math.random() * lowercase.length)];
-            password += numbers[Math.floor(Math.random() * numbers.length)];
-            password += symbols[Math.floor(Math.random() * symbols.length)];
-
-            // Aggiungiamo i caratteri rimanenti in modo casuale
-            for (let i = password.length; i < length; i++) {
-                password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
-            }
-
-            // Mischiamo i caratteri per rendere la password più imprevedibile
-            password = password.split('').sort(() => Math.random() - 0.5).join('');
-
-            const containerPassword = document.querySelector('#password');
-            containerPassword.innerHTML = password;
-        }
-
-        //COPY PASSWORD
-        function copy(elementId) {
-            const text = document.getElementById(elementId).textContent; // Prendi il testo dall'elemento con ID 'password'
-            const toastMessage = document.querySelector('.toast-message');
-
-            // Usa l'API Clipboard per copiare il testo
-            navigator.clipboard.writeText(text).then(() => {
-                toastMessage.classList.remove('d-none');
-
-                setTimeout(() => {
-                    toastMessage.classList.add('d-none');
-                }, 4000);
-            }).catch(err => {
-                console.error("Errore durante la copia della password: ", err);
-            });
-        }
-    </script>
     <div class="container-dashboard">
         {{-- WELCOME CARD --}}
         <div class="border welcome-card">
             <h1 class="border">{{ __('iLock') }}</h1>
-            <div class="">
+            <div>
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
