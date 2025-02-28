@@ -6,6 +6,17 @@
     flex-direction: column;
     justify-content: space-evenly;
 
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background-color: black;
+    
+        &:active {
+            background-color: black;
+            transform: scale(1.5);
+            box-shadow: none;
+        }
+    }
+
     .welcome-card {
         padding: 20px;
 
@@ -56,7 +67,7 @@
         }
     }
 
-    #toast-message {
+    .toast-message {
         padding: 20px;
         width: 300px;
         position: absolute;

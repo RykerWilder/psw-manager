@@ -27,14 +27,3 @@
     text-align: center;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background-color: black;
-
-    &:active {
-        background-color: black;
-        transform: scale(1.5);
-        box-shadow: none;
-    }
-}
-

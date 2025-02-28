@@ -62,9 +62,17 @@
         //COPY PASSWORD
         function copy(elementId) {
             const text = document.getElementById(elementId).textContent;
-            console.log(text);
+            const toastMessage = document.querySelector('.toast-message');
             // Usa l'API Clipboard per copiare il testo
-            navigator.clipboard.writeText(text);
+            navigator.clipboard.writeText(text).then(() => {
+                toastMessage.classList.remove('d-none');
+
+                setTimeout(() => {
+                    toastMessage.classList.add('d-none');
+                }, 4000);
+            }).catch(err => {
+                console.error("Errore durante la copia della password: ", err);
+            });
         }
     </script>
 
@@ -108,6 +116,17 @@
             <h5>Created: {{ $password->created_at->format('d/m/Y') }} </h5>
         </div>
     </div>
+
+    {{-- TOAST MESSAGE --}}
+    <div class="toast-message border d-none">
+        <div class="toast-header">
+            <h3>iLock</h3>
+            <span>now</span>
+        </div>
+        <h6>Password copied successfully!</h6>
+    </div>
+    {{-- TOAST MESSAGE --}}
+
     {{-- DELETE MODAL --}}
     <div class="modal-delete d-none border">
         <div class="">
@@ -123,4 +142,5 @@
             <button class="ms-closeModalDelete border">Undo</button>
         </div>
     </div>
+    {{-- DELETE MODAL --}}
 @endsection

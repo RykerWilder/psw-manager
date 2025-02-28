@@ -47,7 +47,7 @@
         //COPY PASSWORD
         function copy(elementId) {
             const text = document.getElementById(elementId).textContent; // Prendi il testo dall'elemento con ID 'password'
-            const toastMessage = document.getElementById('toast-message');
+            const toastMessage = document.querySelector('.toast-message');
 
             // Usa l'API Clipboard per copiare il testo
             navigator.clipboard.writeText(text).then(() => {
@@ -97,8 +97,11 @@
         </div>
 
         {{-- TOAST MESSAGE --}}
-        <div id="toast-message" class="border d-none">
-            <div class="toast-header"><h3>iLock</h3><span>now</span></div>
+        <div class="toast-message border d-none">
+            <div class="toast-header">
+                <h3>iLock</h3>
+                <span>now</span>
+            </div>
             <h6>Password copied successfully!</h6>
         </div>
     </div>

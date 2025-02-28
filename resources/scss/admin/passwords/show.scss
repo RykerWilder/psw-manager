@@ -66,6 +66,20 @@
 
 }
 
+.toast-message {
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+
+    .toast-header {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
 .modal-delete {
     padding: 10px;
     position: absolute;
