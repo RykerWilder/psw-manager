@@ -1,7 +1,65 @@
 @extends('layouts.admin')
 
 @section('content')
-    <script src="{{ asset('js/admin/dashboard.js') }}"></script>
+    <script>
+        //PASSWORD LENGTH
+        let pswLength = 12;
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const inputRange = document.getElementById('custom-range');
+            const changeLength = document.querySelector('.password-length');
+
+            inputRange.addEventListener('change', function() {
+                pswLength = inputRange.value * 4;
+                changeLength.innerHTML = pswLength;
+            });
+        })
+
+        //PASSWORD GENERATOR
+        function generatePassword(length) {
+            const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const lowercase = "abcdefghijklmnopqrstuvwxyz";
+            const numbers = "0123456789";
+            const symbols = "!@#$%^&*()_+[]{}|;:,.?";
+
+            const allCharacters = uppercase + lowercase + numbers + symbols;
+            let password = "";
+
+            // Garantiamo che la password contenga almeno un carattere di ciascun tipo
+            password += uppercase[Math.floor(Math.random() * uppercase.length)];
+            password += lowercase[Math.floor(Math.random() * lowercase.length)];
+            password += numbers[Math.floor(Math.random() * numbers.length)];
+            password += symbols[Math.floor(Math.random() * symbols.length)];
+
+            // Aggiungiamo i caratteri rimanenti in modo casuale
+            for (let i = password.length; i < length; i++) {
+                password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
+            }
+
+            // Mischiamo i caratteri per rendere la password più imprevedibile
+            password = password.split('').sort(() => Math.random() - 0.5).join('');
+
+            const containerPassword = document.querySelector('#password');
+            containerPassword.innerHTML = password;
+        }
+
+        //COPY PASSWORD
+        function copy(elementId) {
+            const text = document.getElementById(elementId).textContent; // Prendi il testo dall'elemento con ID 'password'
+            const toastMessage = document.querySelector('.toast-message');
+
+            // Usa l'API Clipboard per copiare il testo
+            navigator.clipboard.writeText(text).then(() => {
+                toastMessage.classList.remove('d-none');
+
+                setTimeout(() => {
+                    toastMessage.classList.add('d-none');
+                }, 4000);
+            }).catch(err => {
+                console.error("Errore durante la copia della password: ", err);
+            });
+        }
+    </script>
 
     <div class="container-dashboard">
         {{-- WELCOME CARD --}}
@@ -16,6 +74,21 @@
 
                 Welcome back <strong>{{ ucfirst($user->name) }}</strong>!
             </div>
+            <p>If you want to create a strong password, it is important to follow some basic guidelines:
+            <ul>
+                <li><strong>Length</strong>: Use at least 12-16 characters. The longer the password, the greater the security.</li>
+                <li><strong>Complexity</strong>: Include a combination of uppercase letters, lowercase letters, numbers, and special
+                    characters (e.g. !, @, #, $, %, etc.).</li>
+                <li><strong>Variety</strong>: Avoid common sequences (e.g. "123456" or "qwerty") or commonly used words (e.g. "password" or
+                    "admin").</li>
+                <li><strong>Uniqueness</strong>: Do not reuse the same password for multiple accounts or services.</li>
+                <li><strong>No personal information</strong>: Avoid including names, dates of birth, phone numbers or other information that
+                    can easily be associated with you.</li>
+                <li><strong>Regularly update</strong>: Change your password regularly, especially for sensitive accounts.</li>
+                <li><strong>Using complex sentences</strong>: Consider using a passphrase, which is a series of random words strung together
+                    (e.g. "Sky!Sea@Mountain2023").</p>
+                </li>
+            </ul>
         </div>
 
         {{-- PASSWORD GENERATOR --}}
