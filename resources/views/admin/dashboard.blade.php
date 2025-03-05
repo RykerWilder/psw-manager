@@ -64,15 +64,14 @@
     <div class="container-dashboard">
         {{-- WELCOME CARD --}}
         <div class="border welcome-card">
-            <h1 class="border">{{ __('iLock') }}</h1>
-            <div>
+            <div class="border">
                 @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
                 @endif
-
-                Welcome back <strong>{{ ucfirst($user->name) }}</strong>!
+                <h1>{{ __('iLock') }}</h1>
+                <h4>Welcome back <strong>{{ ucfirst($user->name) }}</strong>!</h4>
             </div>
             <p>If you want to create a strong password, it is important to follow some basic guidelines:
             <ul>

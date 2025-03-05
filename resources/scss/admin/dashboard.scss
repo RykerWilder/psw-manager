@@ -20,12 +20,13 @@
     .welcome-card {
         padding: 20px;
 
-        h1 {
-            padding: 10px;
-        }
-
+        
         div {
             font-size: 1.5rem;
+
+            h1, h4{
+                padding: 10px;
+            }
         }
     }
 
