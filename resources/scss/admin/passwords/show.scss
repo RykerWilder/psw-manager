@@ -2,8 +2,6 @@
 
     h1 {
         text-align: center;
-        width: 50%;
-        margin: 0 auto;
         padding: 10px;
         border-radius: 8px;
     }
@@ -57,7 +55,7 @@
             border: 0;
             background-color: transparent;
             transition: all .3s linear;
-    
+
             &:hover {
                 transform: scale(1.2);
             }

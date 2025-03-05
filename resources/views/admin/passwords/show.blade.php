@@ -82,8 +82,9 @@
         </div>
     @endif
     <div class="show-password">
-        <div class="">
+        <div>
             <h1>{{ $password->name }}</h1>
+
             <div class="edit">
                 {{-- EDIT BUTTON --}}
                 <a href="{{ route('admin.passwords.edit', ['password' => $password->id]) }}" class="border"
