@@ -8,7 +8,6 @@
 
             // Aggiungi un event listener per rilevare i cambiamenti nella barra di ricerca
             searchBar.addEventListener('keyup', function() {
-
                 const searchTerm = searchBar.value.toLowerCase();
 
                 // Loop attraverso gli elementi della lista e nascondi quelli che non corrispondono
@@ -32,14 +31,21 @@
         </div>
     @endif
     <div class="passwords-list-container">
-        {{-- SEARCHBAR --}}
-        <div class="searchbar">
+        {{-- FILTERS --}}
+        <div id="filter-container">
+            <div class="select border">
+                <span><i class="fa-solid fa-arrow-up-wide-short"></i></span>
+                <select name="" id="">
+                    <option value="">Sort by</option>
+                    <option value="">Pippo</option>
+                    <option value="">Jonny</option>
+                </select>
+            </div>
             <nav class="border">
                 <input id="search-bar" type="search" placeholder="Search password" aria-label="Search" class="">
                 <span class="border"><i class="fa-solid fa-magnifying-glass"></i></span>
             </nav>
         </div>
-
 
         {{-- PASSWORDS LIST --}}
         <div class="passwords-list">
