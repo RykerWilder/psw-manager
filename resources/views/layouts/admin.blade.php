@@ -60,10 +60,10 @@
             </nav>
         </header>
 
-        <div class="container-fluid" style="">
+        <div class="container-fluid" style="height: 100vh">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-black navbar-dark sidebar collapse ">
-                    <div class="position-fixed w-100">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-black navbar-dark sidebar collapse">
+                    <div class="position-fixed">
                         <ul class="nav nav-underline d-flex flex-column justify-content-evenly">
                             <li class="nav-item" id="navbar">
                                 <a class="nav-link text-white fs-5 {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
