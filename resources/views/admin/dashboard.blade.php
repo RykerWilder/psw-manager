@@ -95,7 +95,7 @@
             </div>
         </div>
         <div id="advise-psw">
-            <h4>If you want to create a <strong>strong password</strong>, it is important to follow some basic guidelines</h4>
+            <h4>Tips for a strong password</h4>
             <ul>
                 <li class="border"><strong>Length</strong>Use at least 12-16 characters. The longer the password, the greater the security.
                 </li>
