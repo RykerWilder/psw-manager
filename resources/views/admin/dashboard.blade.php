@@ -64,30 +64,15 @@
     <div class="container-dashboard">
         {{-- WELCOME CARD --}}
         <div class="border welcome-card">
-            <div class="border">
+            <h1 class="border">{{ __('iLock') }}</h1>
+            <div>
                 @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                 @endif
-                <h1>{{ __('iLock') }}</h1>
                 <h4>Welcome back <strong>{{ ucfirst($user->name) }}</strong>!</h4>
             </div>
-            <p>If you want to create a strong password, it is important to follow some basic guidelines:
-            <ul>
-                <li><strong>Length</strong>: Use at least 12-16 characters. The longer the password, the greater the security.</li>
-                <li><strong>Complexity</strong>: Include a combination of uppercase letters, lowercase letters, numbers, and special
-                    characters (e.g. !, @, #, $, %, etc.).</li>
-                <li><strong>Variety</strong>: Avoid common sequences (e.g. "123456" or "qwerty") or commonly used words (e.g. "password" or
-                    "admin").</li>
-                <li><strong>Uniqueness</strong>: Do not reuse the same password for multiple accounts or services.</li>
-                <li><strong>No personal information</strong>: Avoid including names, dates of birth, phone numbers or other information that
-                    can easily be associated with you.</li>
-                <li><strong>Regularly update</strong>: Change your password regularly, especially for sensitive accounts.</li>
-                <li><strong>Using complex sentences</strong>: Consider using a passphrase, which is a series of random words strung together
-                    (e.g. "Sky!Sea@Mountain2023").</p>
-                </li>
-            </ul>
         </div>
 
         {{-- PASSWORD GENERATOR --}}
@@ -108,6 +93,28 @@
                             class="fa-solid fa-copy"></i></button>
                 </div>
             </div>
+        </div>
+        <div id="advise-psw">
+            <h4>If you want to create a <strong>strong password</strong>, it is important to follow some basic guidelines</h4>
+            <ul>
+                <li class="border"><strong>Length</strong>Use at least 12-16 characters. The longer the password, the greater the security.
+                </li>
+                <li class="border"><strong>Complexity</strong>Include a combination of uppercase letters, lowercase letters, numbers, and
+                    special
+                    characters (e.g. !, @, #, $, %, etc.).</li>
+                <li class="border"><strong>Variety</strong>Avoid common sequences (e.g. "123456" or "qwerty") or commonly used words (e.g.
+                    "password" or
+                    "admin").</li>
+                <li class="border"><strong>Uniqueness</strong>Do not reuse the same password for multiple accounts or services.</li>
+                <li class="border"><strong>No personal information</strong>Avoid including names, dates of birth, phone numbers or other
+                    information that
+                    can easily be associated with you.</li>
+                <li class="border"><strong>Regularly update</strong>Change your password regularly, especially for sensitive accounts.</li>
+                <li class="border"><strong>Using complex sentences</strong>Consider using a passphrase, which is a series of random words
+                    strung together
+                    (e.g. "Sky!Sea@Mountain2023").
+                </li>
+            </ul>
         </div>
 
         {{-- TOAST MESSAGE --}}
