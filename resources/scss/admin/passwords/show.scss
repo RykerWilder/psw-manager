@@ -83,6 +83,8 @@
     position: absolute;
     bottom: 50%;
     left: 50%;
+    background-color: white;
+    transform: translateX(-25%);
 
     .edit {
         display: flex;
@@ -92,7 +94,7 @@
         form {
             button {
                 padding: 10px 20px;
-                background-color: black;
+                background-color: red;
                 color: white;
                 transition: transform, box-shadow .3s linear;
 
@@ -104,7 +106,7 @@
         }
 
         button {
-            background-color: red;
+            background-color: black;
             color: white;
             padding: 10px 20px;
             transition: background-color, box-shadow .3s linear;
