@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
 // PASSWORD GENERATOR
 const btnPswGenerator = document.getElementById('pswGnerator');
 btnPswGenerator.addEventListener('click', function () {
@@ -40,9 +41,12 @@ btnPswGenerator.addEventListener('click', function () {
     containerPassword.innerHTML = password;
 });
 
+
 //COPY PASSWORD
-function copy(elementId) {
-    const text = document.getElementById(elementId).textContent; // Prendi il testo dall'elemento con ID 'password'
+const btnCopyPsw = document.getElementById('copyPsw');
+btnCopyPsw.addEventListener('click', function() {
+    const text = document.getElementById('password').textContent;
+     // Prendi il testo dall'elemento con ID 'password'
     const toastMessage = document.querySelector('.toast-message');
 
     // Usa l'API Clipboard per copiare il testo
@@ -55,4 +59,4 @@ function copy(elementId) {
     }).catch(err => {
         console.error("Errore durante la copia della password: ", err);
     });
-}
+});

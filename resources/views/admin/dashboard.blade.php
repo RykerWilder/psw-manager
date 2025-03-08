@@ -29,7 +29,7 @@
                             class="fa-solid fa-repeat"></i></button>
                     <div id="password" class="border">
                     </div>
-                    <button onclick="copy('password')" class="border" title="Copy"><i
+                    <button id="copyPsw" class="border" title="Copy"><i
                             class="fa-solid fa-copy"></i></button>
                 </div>
             </div>
