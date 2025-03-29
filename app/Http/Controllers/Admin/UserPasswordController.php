@@ -14,12 +14,24 @@ class UserPasswordController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $passwords = UserPassword::all();
+        // Ottieni l'ID dell'utente loggato
+        $userId = Auth::id();
+    
+        // Inizializza la query
+        $query = UserPassword::where('user_id', $userId);  // Filtro per l'utente autenticato
+    
+        // Filtra per nome se è stato selezionato un nome dal dropdown
+        if ($request->has('filter_name') && $request->filter_name != '') {
+            $query->where('name', 'like', '%' . $request->filter_name . '%');
+        }
+    
+        $passwords = $query->get(); // Ottieni le password filtrate per l'utente
         $user = User::all();
         return view('admin.passwords.index', compact('passwords', 'user'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
