@@ -47,8 +47,9 @@ npm install
 
 Copy the .env.example file to create a .env file:
 
+```bash
 cp .env.example .env
-
+```
 
 **Generate the application key**:
 
